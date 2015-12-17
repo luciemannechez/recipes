@@ -1,0 +1,25 @@
+RecipesBundle\Entity\IngredientRecipe:
+    type: entity
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        quantity:
+            type: string
+            length: 64
+
+    oneToOne:
+        recipe:
+            targetEntity: RecipesBundle\Entity\Recipe
+            joinColumn:
+                name: recipe_id
+                referencedColumnName: id
+        ingredient:
+            targetEntity: RecipesBundle\Entity\Ingredient
+            joinColumn:
+                name: ingredient_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

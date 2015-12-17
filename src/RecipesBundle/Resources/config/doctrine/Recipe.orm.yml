@@ -1,0 +1,31 @@
+RecipesBundle\Entity\Recipe:
+    type: entity
+    repositoryClass: RecipesBundle\Repository\RecipeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        prepTime:
+            type: time
+            nullable: true
+        cookingTime:
+            type: time
+            nullable: true
+        peopleNb:
+            type: boolean
+            nullable: true
+        steps:
+            type: text
+    manyToOne:
+        type:
+            targetEntity: RecipesBundle\Entity\Type
+            joinColumn:
+                name: type_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }
