@@ -10,4 +10,13 @@ namespace RecipesBundle\Repository;
  */
 class RecipeRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * Returns all categories ordered by title ascendant.
+     *
+     * @return \RecipesBundle\Entity\Recipe
+     */
+    public function getRecipes()
+    {
+        return $this->findBy([], [ 'name' => 'ASC' ]);
+    }
 }

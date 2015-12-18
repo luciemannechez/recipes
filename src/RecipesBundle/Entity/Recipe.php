@@ -7,6 +7,26 @@ namespace RecipesBundle\Entity;
  */
 class Recipe
 {
+    public function update(Recipe $newRecipe, $function)
+    {
+        //$this = $oldRecipe;
+
+        // pour chaque propriétés de l'objet, s'il a une nouvelle valeur, alors on met à jour la valeur de la propriété de l'ancien objet
+        foreach ($this as $property => $value) {
+            if ( $newRecipe->$property != null)
+                $this->$property = $newRecipe->$property;
+            else {
+                // si c'est put et qu'il n'y a pas de nouvelle valeur, alors on remet à NULL
+                if ($function == "put")
+                    $value = NULL;
+                // si c'est patch, on remet l'ancienne valeur
+                elseif ($function == "patch")
+                    $this->$property = $value;
+            }
+        }
+    }
+
+    // GENERATED CODE
     /**
      * @var int
      */
@@ -35,7 +55,7 @@ class Recipe
     /**
      * @var string
      */
-    private $preparation;
+    private $steps;
 
 
     /**
@@ -143,35 +163,6 @@ class Recipe
     {
         return $this->peopleNb;
     }
-
-    /**
-     * Set preparation
-     *
-     * @param string $preparation
-     *
-     * @return Recipe
-     */
-    public function setPreparation($preparation)
-    {
-        $this->preparation = $preparation;
-
-        return $this;
-    }
-
-    /**
-     * Get preparation
-     *
-     * @return string
-     */
-    public function getPreparation()
-    {
-        return $this->preparation;
-    }
-    /**
-     * @var string
-     */
-    private $steps;
-
 
     /**
      * Set steps

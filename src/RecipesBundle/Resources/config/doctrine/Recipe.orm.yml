@@ -18,7 +18,7 @@ RecipesBundle\Entity\Recipe:
             type: time
             nullable: true
         peopleNb:
-            type: boolean
+            type: integer
             nullable: true
         steps:
             type: text

@@ -1,1 +1,14 @@
+recipes:
+    path: /recipes
+    defaults: { _controller: "RecipesBundle:Recipe:getRecipes" }
+    methods:  [GET]
 
+recipe:
+    path: /recipes/{id}
+    defaults: { _controller: "RecipesBundle:Recipe:getRecipe" }
+    methods:  [GET]
+
+recipe_new:
+    path: /recipes/new
+    defaults: { _controller: "RecipesBundle:Recipe:postRecipe" }
+    methods:  [POST]
