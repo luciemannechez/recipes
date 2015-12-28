@@ -121,6 +121,18 @@ class RecipeController extends FOSRestController
      *              "description"="The recipe unique identifier."
      *          }
      *      },
+     *     parameters={
+     *          {
+     *              "name"="name",
+     *              "dataType"="string",
+     *              "required"=true
+     *          },
+     *          {
+     *              "name"="people_nb",
+     *              "dataType"="integer",
+     *              "required"=false
+     *          }
+     *     }
      * )
      */
     public function putRecipeAction(Recipe $newRecipe, Recipe $oldRecipe, ConstraintViolationListInterface $violations)
@@ -129,7 +141,7 @@ class RecipeController extends FOSRestController
             return $this->view($violations, 400);
         }
 
-        $oldRecipe->update($newRecipe, $function = "put");
+        $oldRecipe->update($newRecipe);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($oldRecipe);
@@ -172,7 +184,7 @@ class RecipeController extends FOSRestController
             return $this->view($violations, 400);
         }
 
-        $oldRecipe->update($newRecipe, $function = "patch");
+        $oldRecipe->patch($newRecipe);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($oldRecipe);

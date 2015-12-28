@@ -1,6 +1,7 @@
-#RecipesBundle\Entity\Recipe:
-#    properties:
-#        name:
-#            - Length:
-#                max: 5
-#                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
+RecipesBundle\Entity\Recipe:
+    properties:
+        name:
+            - NotBlank: ~
+            - Length:
+                max: 5
+                maxMessage: 'Your first name cannot be longer than {{ limit }} characters'
