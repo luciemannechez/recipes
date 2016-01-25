@@ -71,9 +71,18 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: RecipesBundle\Entity\User
+    registration:
+        form:
+            type: RecipesBundle\Form\Type\RegistrationType
+
+jms_serializer:
+    metadata:
+        directories:
+            - { path: %kernel.root_dir%/Resources/serializer/FOS, namespace_prefix: 'FOS\UserBundle' }
 
 #http://www.jpsymfony.com/symfony2/mettre-en-place-une-api-rest-1-ere-partie
 fos_rest:
+    disable_csrf_role: ROLE_API
     body_listener:
         # Convert underscore case properties to camel case
         # ie: { "the_date": "2014-09-30" } => { "theDate": "2014-09-30" }

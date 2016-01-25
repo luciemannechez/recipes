@@ -2,3 +2,8 @@ services:
     recipes_manager:
         class: RecipesBundle\Entity\Manager\RecipeManager
         arguments: [ "@doctrine.orm.entity_manager" , 'RecipesBundle\Entity\Recipe']
+
+    app.form.registration:
+        class: RecipesBundle\Form\Type\RegistrationType
+        tags:
+            - { name: form.type, alias: app_user_registration }

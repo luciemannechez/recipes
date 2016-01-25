@@ -3,6 +3,11 @@ recipes:
     prefix: /api/recipes
     type: rest
 
+users:
+    resource: "@RecipesBundle/Controller/UserController.php"
+    prefix: /api/users
+    type: rest
+
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

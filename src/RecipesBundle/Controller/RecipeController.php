@@ -30,9 +30,9 @@ class RecipeController extends FOSRestController
      */
     public function getRecipesAction()
     {
-        return $this->get('doctrine')
-            ->getRepository('RecipesBundle:Recipe')
-            ->getRecipes();
+        $em = $this->getDoctrine()->getManager();
+
+        return $em->getRepository('RecipesBundle:Recipe')->findAll();
     }
 
     /**
